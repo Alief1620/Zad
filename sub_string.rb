@@ -1,20 +1,17 @@
 # frozen_string_literal: true
 
-
-string = ("below,down,go,going,horn,how,howdy,it,i,low,own,part,partner,sit")
-words = string.split
+puts 'enter string: '
+words = gets.chomp.split
 matchers = %w[go a e]
 
-matchers.each do |matcher|
-  result = 0
-  words.each do |word|
-    if word.include?(matcher)
-      count = word.scan(matcher).length
-      result += count
-    end
+def substring(matchers, words)
+  matchers.each_with_object({}) do |matcher, result_hash|
+    result = 0
+
+    words.each { |word| result += 1 if word.include?(matcher) }
+
+    result_hash[matcher] = result
   end
-  hash = {
-    matcher => result
-  }
-  print hash
 end
+
+puts(substring(matchers, words))

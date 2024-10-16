@@ -1,26 +1,25 @@
 # frozen_string_literal: true
 
-
-alphabet = "abcdefghijklmnopqrstuvwxyz"
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
 change = 5
-string = "Abcd"
-array = string.chars
+puts 'enter string: '
+array = gets.chomp.chars
 result = ''
 
-for i in array
-  male_i = i.downcase
-  letter_position = alphabet.index(male_i)
+array.each do |letter|
+  small_letter = letter.downcase
+  letter_position = alphabet.index(small_letter)
 
-  if alphabet.include?(male_i)
+  if alphabet.include?(small_letter)
     new_position = (letter_position + change) % alphabet.length
     wynik = alphabet[new_position]
-    if i == i.upcase
+    if letter == letter.upcase
       result += wynik.upcase
     else
       result += wynik
-      end
-    else
-      result += i
+    end
+  else
+    result += letter
   end
 end
 puts result
